@@ -1,0 +1,16 @@
+0, Suspenso
+2.5, Suspenso
+4.9, Suspenso
+5, Aprobado
+6.5, Aprobado
+6.9, Aprobado
+7, Notable
+8.5, Notable
+8.9, Notable
+9, Sobresaliente
+9.5, Sobresaliente
+9.9, Sobresaliente
+10, Matricula
+10.1, Error en la nota
+-3, Error en la nota
+-0.1, Error en la nota
