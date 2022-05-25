@@ -22,12 +22,12 @@ jobs:
         cache: maven
         
     - name: Construccion con Maven
-      run: mvn -f pom.xml clean package verify
+      run: mvn -f pom.xml clean package verify javadoc:javadoc site:site
       
     - name: Generacion de artefactos
       uses: actions/upload-artifact@v3
       with:
         name: GitHubActions
-        path: '${{ github.workspace }}/target/*.jar'
+        path: '${{ github.workspace }}/target/*'
     
       
