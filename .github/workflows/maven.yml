@@ -27,8 +27,8 @@ jobs:
     - name: Generacion de artefactos
       uses: actions/upload-artifact@v3
       with:
-        name: GitHubActions
-        path: '${{ github.workspace }}/target/*'
+        name: GitHubActions-site
+        path: '${{ github.workspace }}/target/site/*'
         
   despliegue:
   
@@ -40,7 +40,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
-          name: GitHubActions
+          name: GitHubActions-site
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
