@@ -24,11 +24,14 @@ jobs:
     - name: Construccion con Maven
       run: mvn -f pom.xml clean package verify javadoc:javadoc site:site
       
+    - name: Copiar archivo index.html
+      run: cp index.html target/
+      
     - name: Generacion de artefactos
       uses: actions/upload-artifact@v3
       with:
         name: GitHubActions-site
-        path: '${{ github.workspace }}/target/site/*'
+        path: '${{ github.workspace }}/target/*'
         
   despliegue:
   
