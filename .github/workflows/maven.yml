@@ -1,4 +1,4 @@
-name: Construccion y Pruebas
+name: Construccion, Pruebas y Despliegue
 
 on:
   push:
@@ -29,5 +29,16 @@ jobs:
       with:
         name: GitHubActions
         path: '${{ github.workspace }}/target/*'
+        
+  despliegue:
+  
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Desplegar Javadoc
+      uses: JamesIves/github-pages-deploy-action@4.3.3
+      with:
+        branch: javadoc
+        folder: .
     
       
