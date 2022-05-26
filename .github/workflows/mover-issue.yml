@@ -6,10 +6,10 @@ on:
       - moved
 jobs:
   Reabrir:
-    if: github.event.project_card.column_id != '18785978'
     runs-on: ubuntu-latest
     steps:
       - uses: dessant/issue-states@v2
+        if: github.event.project_card.column_id != '18785978'
         with:
           github-token: ${{ secrets.TOKEN_GITHUB }}
           open-issue-columns: 'Pendiente de Revisión, Aprobado, En Desarrollo'
@@ -50,7 +50,7 @@ jobs:
           add-labels: "completado"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
   
-  Cerrar_Reabrir:
+  Cerrar:
     if: github.event.project_card.column_id == '18785978'
     runs-on: ubuntu-latest
     needs: Reetiquetar
