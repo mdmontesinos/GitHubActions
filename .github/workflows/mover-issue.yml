@@ -45,4 +45,5 @@ jobs:
         name: Cerrar Issue Completado
         uses: peter-evans/close-issue@v2
         with:
-          comment: Issue cerrado automaticamente al completar
+          token: ${{ secrets.GITHUB_TOKEN }}
+          comment: 'Issue cerrado automaticamente al completar'
