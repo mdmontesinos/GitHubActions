@@ -1,0 +1,40 @@
+name: Mover Issue de Columna
+on:
+  project_card:
+    types:
+      - moved
+jobs:
+  reetiquetar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: pendiente
+        uses: andymckay/labeler@5c59dabdfd4dd5bd9c6e6d255b01b9d764af4414
+        if: github.event.project_card.column_id == '18785974'
+        with:
+          remove-labels: "aprobado, en-desarrollo, completado"
+          add-labels: "pendiente"
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: aprobado
+        uses: andymckay/labeler@5c59dabdfd4dd5bd9c6e6d255b01b9d764af4414
+        if: github.event.project_card.column_id == '18785975'
+        with:
+          remove-labels: "pendiente, en-desarrollo, completado"
+          add-labels: "aprobado"
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: en-desarrollo
+        uses: andymckay/labeler@5c59dabdfd4dd5bd9c6e6d255b01b9d764af4414
+        if: github.event.project_card.column_id == '18785976'
+        with:
+          remove-labels: "pendiente, aprobado, completado"
+          add-labels: "en-desarrollo"
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: completado
+        uses: andymckay/labeler@5c59dabdfd4dd5bd9c6e6d255b01b9d764af4414
+        if: github.event.project_card.column_id == '18785977'
+        with:
+          remove-labels: "pendiente, aprobado, en-desarrollo"
+          add-labels: "completado"
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
