@@ -1,0 +1,37 @@
+name: Asignacion de Issue a Columna
+
+on:
+  issues:
+    types: [labeled]
+jobs:
+  Mover_Issue_A_Columna:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Pendiente
+      uses: konradpabjan/move-labeled-or-milestoned-issue@v2.0
+      with:
+        action-token: "${{ secrets.TOKEN_GITHUB }}"
+        project-url: "https://github.com/mdmontesinos/GitHubActions/projects/1"
+        column-name: "Pendiente de Revisión"
+        label-name: "pendiente"
+    - name: Aprobado
+      uses: konradpabjan/move-labeled-or-milestoned-issue@v2.0
+      with:
+        action-token: "${{ secrets.TOKEN_GITHUB }}"
+        project-url: "https://github.com/mdmontesinos/GitHubActions/projects/1"
+        column-name: "Aprobado"
+        label-name: "aprobado"
+    - name: En Desarrollo
+      uses: konradpabjan/move-labeled-or-milestoned-issue@v2.0
+      with:
+        action-token: "${{ secrets.TOKEN_GITHUB }}"
+        project-url: "https://github.com/mdmontesinos/GitHubActions/projects/1"
+        column-name: "En Desarrollo"
+        label-name: "en-desarrollo"
+    - name: Completado
+      uses: konradpabjan/move-labeled-or-milestoned-issue@v2.0
+      with:
+        action-token: "${{ secrets.TOKEN_GITHUB }}"
+        project-url: "https://github.com/mdmontesinos/GitHubActions/projects/1"
+        column-name: "Completado"
+        label-name: "completado"
