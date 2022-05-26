@@ -1,4 +1,4 @@
-name: Asignacion de Issue a Columna
+name: Issue Reetiquetado
 
 on:
   issues:
@@ -35,3 +35,12 @@ jobs:
         project-url: "https://github.com/mdmontesinos/GitHubActions/projects/1"
         column-name: "Completado"
         label-name: "completado"
+  
+  Cerrar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cerrar Issue Completado
+        uses: bdougie/close-issues-based-on-label@master
+        env:
+          LABEL: completado
+          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
