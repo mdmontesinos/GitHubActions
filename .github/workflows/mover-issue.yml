@@ -1,12 +1,22 @@
-name: Mover Issue de Columna
+name: Issue movido de Columna
 
 on:
   project_card:
     types:
       - moved
 jobs:
-  reetiquetar:
+  Reabrir:
+    if: github.event.project_card.column_id != '18785978'
     runs-on: ubuntu-latest
+    steps:
+      - uses: dessant/issue-states@v2
+        with:
+          github-token: ${{ secrets.TOKEN_GITHUB }}
+          open-issue-columns: 'Pendiente de Revisión, Aprobado, En Desarrollo'
+
+  Reetiquetar:
+    runs-on: ubuntu-latest
+    needs: Reabrir
     steps:
       - name: pendiente
         uses: andymckay/labeler@1.0.4
@@ -40,13 +50,12 @@ jobs:
           add-labels: "completado"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
   
-  cerrar:
+  Cerrar_Reabrir:
     if: github.event.project_card.column_id == '18785978'
-    needs: reetiquetar
     runs-on: ubuntu-latest
+    needs: Reetiquetar
     steps:
-      - name: Cerrar Issue Completado
-        uses: bdougie/close-issues-based-on-label@master
-        env:
-          LABEL: completado
-          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+      - uses: dessant/issue-states@v2
+        with:
+          github-token: ${{ secrets.TOKEN_GITHUB }}
+          closed-issue-columns: 'Completado'
