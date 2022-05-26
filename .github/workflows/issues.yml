@@ -1,0 +1,28 @@
+name: Creacion Issue
+
+env:
+  GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  crear_issue:
+    runs-on: ubuntu-latest
+    name: Etiquetar y asignar issue a proyecto
+    steps:
+      - name: Etiquetar pendiente
+        uses: andymckay/labeler@master
+        if: github.event.action == 'opened'
+        with:
+          add-labels: "pendiente"
+      
+      - name: Asignar a Columna Pendiente de Revision
+        uses: srggrs/assign-one-project-github-action@1.2.1
+        if: |
+          contains(github.event.issue.labels.*.name, 'pendiente') ||
+          github.event.action == 'opened'
+        with:
+          project: 'https://github.com/mdmontesinos/GitHubActions/projects/1'
+          column_name: 'Pendiente de Revisión'
