@@ -39,6 +39,7 @@ jobs:
           add-labels: "completado"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
   cerrar:
+    needs: reetiquetar
     runs-on: ubuntu-latest
     steps:
       - if: github.event.project_card.column_id == '18785978'
