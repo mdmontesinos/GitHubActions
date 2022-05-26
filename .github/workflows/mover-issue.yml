@@ -39,12 +39,13 @@ jobs:
           remove-labels: "pendiente, aprobado, en-desarrollo"
           add-labels: "completado"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+  
   cerrar:
+    if: github.event.project_card.column_id == '18785978'
     needs: reetiquetar
     runs-on: ubuntu-latest
     steps:
-      - if: github.event.project_card.column_id == '18785978'
-        name: Cerrar Issue Completado
+      - name: Cerrar Issue Completado
         uses: bdougie/close-issues-based-on-label@master
         env:
           LABEL: completado
