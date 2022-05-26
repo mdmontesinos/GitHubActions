@@ -1,5 +1,8 @@
 name: Gestionar Issues
 
+env:
+  GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+
 on:
   issues:
     types: [opened, labeled]
