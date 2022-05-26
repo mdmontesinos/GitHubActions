@@ -16,30 +16,30 @@ jobs:
           add-labels: "pendiente"
       
 
-    - name: Asignar a Columna Pendiente de Revision
-      uses: srggrs/assign-one-project-github-action@1.2.1
-      if: contains(github.event.issue.labels.*.name, 'pendiente')
-      with:
-        project: 'https://github.com/mdmontesinos/GitHubActions/projects/1'
-        column_name: 'Pendiente de Revisión'
-        
-    - name: Asignar a Columna Aprobado
-      uses: srggrs/assign-one-project-github-action@1.2.1
-      if: contains(github.event.issue.labels.*.name, 'aprobado')
-      with:
-        project: 'https://github.com/mdmontesinos/GitHubActions/projects/1'
-        column_name: 'Aprobado'
-        
-    - name: Asignar a Columna En Desarrollo
-      uses: srggrs/assign-one-project-github-action@1.2.1
-      if: contains(github.event.issue.labels.*.name, 'en-desarrollo')
-      with:
-        project: 'https://github.com/mdmontesinos/GitHubActions/projects/1'
-        column_name: 'En Desarrollo'
-        
-     - name: Asignar a Columna Completado
-      uses: srggrs/assign-one-project-github-action@1.2.1
-      if: contains(github.event.issue.labels.*.name, 'completado')
-      with:
-        project: 'https://github.com/mdmontesinos/GitHubActions/projects/1'
-        column_name: 'Completado'
+      - name: Asignar a Columna Pendiente de Revision
+        uses: srggrs/assign-one-project-github-action@1.2.1
+        if: contains(github.event.issue.labels.*.name, 'pendiente')
+        with:
+          project: 'https://github.com/mdmontesinos/GitHubActions/projects/1'
+          column_name: 'Pendiente de Revisión'
+
+      - name: Asignar a Columna Aprobado
+        uses: srggrs/assign-one-project-github-action@1.2.1
+        if: contains(github.event.issue.labels.*.name, 'aprobado')
+        with:
+          project: 'https://github.com/mdmontesinos/GitHubActions/projects/1'
+          column_name: 'Aprobado'
+
+      - name: Asignar a Columna En Desarrollo
+        uses: srggrs/assign-one-project-github-action@1.2.1
+        if: contains(github.event.issue.labels.*.name, 'en-desarrollo')
+        with:
+          project: 'https://github.com/mdmontesinos/GitHubActions/projects/1'
+          column_name: 'En Desarrollo'
+
+      - name: Asignar a Columna Completado
+        uses: srggrs/assign-one-project-github-action@1.2.1
+        if: contains(github.event.issue.labels.*.name, 'completado')
+        with:
+          project: 'https://github.com/mdmontesinos/GitHubActions/projects/1'
+          column_name: 'Completado'
