@@ -7,6 +7,11 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 class TestEjercicio1 {
+	
+	@Test 
+	void Error() {
+		assertTrue(true);
+	}
 
 	@Test
 	void EsPar() {
