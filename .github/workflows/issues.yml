@@ -18,7 +18,9 @@ jobs:
 
       - name: Asignar a Columna Pendiente de Revision
         uses: srggrs/assign-one-project-github-action@1.2.1
-        if: contains(github.event.issue.labels.*.name, 'pendiente')
+        if: |
+          contains(github.event.issue.labels.*.name, 'pendiente') ||
+          github.event.action == 'opened'
         with:
           project: 'https://github.com/mdmontesinos/GitHubActions/projects/1'
           column_name: 'Pendiente de Revisión'
