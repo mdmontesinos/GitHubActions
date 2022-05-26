@@ -38,3 +38,11 @@ jobs:
           remove-labels: "pendiente, aprobado, en-desarrollo"
           add-labels: "completado"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+  cerrar:
+    runs-on: ubuntu-latest
+    steps:
+      - if: github.event.project_card.column_id == '18785978'
+        name: Cerrar Issue Completado
+        uses: peter-evans/close-issue@v2
+        with:
+          comment: Issue cerrado automaticamente al completar
