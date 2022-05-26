@@ -1,0 +1,17 @@
+name: Issue cerrado manualmente
+
+on:
+  issues:
+    types: [closed]
+    
+jobs:
+  Reetiquetar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Reetiquetar
+        uses: andymckay/labeler@1.0.4
+        if: github.event.project_card.column_id == '18785978'
+        with:
+          remove-labels: "pendiente, aprobado, en-desarrollo"
+          add-labels: "completado"
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
