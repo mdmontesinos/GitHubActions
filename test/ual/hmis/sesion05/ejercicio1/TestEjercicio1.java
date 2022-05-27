@@ -10,7 +10,7 @@ class TestEjercicio1 {
 	
 	@Test 
 	void Error() {
-		assertTrue(true);
+		assertTrue(false);
 	}
 
 	@Test
